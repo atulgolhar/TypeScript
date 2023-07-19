@@ -1,1 +1,33 @@
 
+let stringArr = ['one', 'hey', 'Dave']
+let guitars = ['Strat', 'Les Paul', 5150]
+let mixedData = ['EVH', 1984, true]
+
+stringerArr[0] = 'John'
+stringArr.push('hey')
+
+guitars[0] = 1984
+guitars.unshift('Jim')
+
+let test = []
+let bands: string[] = []
+bands.push('Van Halen')
+
+// Tuple
+let myTuple: [string, number, boolean] = ['Dave', 42, true]	// mouse over to see type
+
+let mixed = ['John', 1, false]	// union type
+
+mixed = myTuple // ok
+myTuple = mixed // error b/c ... TO DO
+myTuple[3] = 42 // error b/c ... TO DO
+myTuple[2] = 42 // ok
+
+
+// Objects
+let myObj: object
+myObj = []
+console.log(typeof myObj)
+myObj = bands	// ok
+myObj = {} 	// ok
+
