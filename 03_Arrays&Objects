@@ -31,3 +31,8 @@ console.log(typeof myObj)
 myObj = bands	// ok
 myObj = {} 	// ok
 
+const exampleObj = {
+    prop1: 'Dave',
+    prop2: true,
+}
+ 
