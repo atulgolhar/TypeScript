@@ -1,1 +1,67 @@
+START AGAIN
+
+FILE STRUCTURE			so we add javascript right inside main.ts TypeScript file
+
+index.html
+main.ts 			add code 		let username = 'Dave'
+							console.log(username) 
+
+need to compile main.js
+how? run main.ts from terminal inside VSCode			00.06.37
+$ tsc main.ts		// this compiles javascript file from typescript tile
+			// now both main.js and main.ts are open and get error blocked scope variable
+			// thus close file main.js file the error goes away
+ATUL so always working in TypeScript and let main.ts TypeScript compile the JavaScript file
+
+Load DOM before loading JavaScript
+
+$ tsc main.ts -w		// watch ts file for any changes, then automatically recompile js file
+v 00.10.10
+this works only when working with 1 file
+but on large projects, many updates occur, so would need to recompile the ts file each time
+Unreasonable, so add -w watch flag
+CNTL C to exit typescript from terminal window
+No Folders at this point
+Typical project would have a source folder and build folder
+Create 2 new folders 		scr 	build			v00.10.40
+Build folder holds 
+- compiled code so typically have index.html inside build folder
+- css folder inside build folder
+- js folder inside build folder
+Raw code like typescript inside src folder
+How to get typescript to understand that all of our main files are in the source directory and then
+also compile those file and put them inside the build directory and even inside the js subfolder inside 
+the build directory.
+Lets put index.html inside the build folder		ATUL move index.hmtl inside build folder
+Delete the js file					ATUL delete the main.js file at top level
+Move main.ts to inside src folder
+So now folder structure is two files		build folder	src folder	
+						index.html	main.ts
+
+So left with two folders only 		build folder	src folder
+Then later we will have a nested directory inside build folder named js folder
+Close terminal window, so only VS Code window is open
+Open new terminal window 	CNTRL SHIFT ` BACKTIC
+ATUL notice that terminal window opens inside VSCode
+Need to create tsconfig.json file 	How? in terminal type $ tsc --init
+$ tsc --init		which creates tsconfig.json file at top level 
+
+=========
+PS C:\Users\agolh\Desktop\04Project_TypeScript8hr\01_StartHere> tsc --init
+
+Created a new tsconfig.json with:                                                                                       
+                                                                                                                     TS 
+  target: es2016
+  module: commonjs
+  strict: true
+  esModuleInterop: true
+  skipLibCheck: true
+  forceConsistentCasingInFileNames: true
+
+
+You can learn more at https://aka.ms/tsconfig
+=========
+
+
+
 
