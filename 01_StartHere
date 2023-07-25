@@ -60,14 +60,11 @@ Created a new tsconfig.json with:
 
 
 You can learn more at https://aka.ms/tsconfig
+
+
 =========
 
-
-
-
-tsconfig.json				// TO DO
-
-
+tsconfig.json	
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
@@ -180,5 +177,4 @@ tsconfig.json				// TO DO
 
 
 
-
-
+v00.13.38
