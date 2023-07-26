@@ -1,1 +1,68 @@
 
+Type Assertion or Type Casting or TypeScript Casting = sometimes you will have information
+about the type of a value that TypeScript can't know about.
+
+=======official docs
+example, if your using document.getElementById then TypeScript only knows that this will 
+return SOME kind of HTMLElement, but you might know that your page will always have an HTMLCanvasElement
+with a given ID. In this situation, you can use a Type Assertion to specify a more specific type 
+
+https://typescriptinglng.org/docs/handbook/2/everyday-types.html#type-assertions
+
+const myCanvas = document.getElementById("main_canvas") as HTMLCanvasE
+====================
+
+eliminate all starter code
+
+CONTL ` to open termainl
+$ tsc -w
+
+create main.ts file
+type One = string
+type Two = string | number
+type Three = 'hello'
+
+// convert to more or less specific
+let a: One = 'hello'
+let b = a as Two	// less specific. ie assigned a type that was less specific (ATUL b equals a but b as type Two ie string|number)
+let c = a as Three 	// more specific
+
+let d = <One>'world'			// angle brackets can not be used in tsx in React
+let e = <string | number>'world'
+
+// use Assertions for Narrowing
+
+const addOrConcat = (a: number, b: number, c: 'add' | 'concat'): number | string => {
+	if (c === 'add') return a + b
+	return '' + a + b 			// this '' empty string will coerse the numbers and make all of this a string instead
+}
+
+let myVal: string = addOrConcat(2,2,'concat')	// TypeScript does NOT like this b/c addOrConcat is a union type but myVal is just string
+
+FIX WITH AN ASSERTION like this (ie hey! ignore the warning as we know we are returning a string)
+
+let myVal: string = addOrConcat(2,2,'concat') as string		// here we say that addOrConcat will return a string in this instance so TypeScript is OK with this
+
+// be careful! b/c TS sees no problem here but a string is returned
+let nextVal: number = addOrConcat(2,2,'concat') as number 	// ATUL NOTES require an explanation
+
+// initially we tell TS hey! we know we are returning a string
+// why? myVal is type string and we return a string
+// and in nextVal we tell TS hey! we know we are returning a number
+// BUT mistake is possible b/c addOrConcat could return a string such as 'concat' then it produces a mistake
+
+// TS will check for errors but it will NOT always be able to check such as in the example above v01.51.49
+/* Conversion of type 'number' to type 'string' may be a mistake because neither type sufficiently overlaps with 
+   the other. If this was intentional, convert the expression to 'unknown' first.  ts(2352)	*/
+
+10 as string			// error
+
+// Forced Casting or Double Casting = so when you know you want to cast something specially then you
+// can overrule TS. How?
+
+(10 as unknown) as string 	// ok b/c VSCode will not complain about this
+
+// Assertions can be very useful when working with DOM
+
+// The DOM
+const img = document.querySelector('img')
