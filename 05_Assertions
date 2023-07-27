@@ -66,3 +66,14 @@ let nextVal: number = addOrConcat(2,2,'concat') as number 	// ATUL NOTES require
 
 // The DOM
 const img = document.querySelector('img')
+
+
+////////////////
+
+// Another way to get rid of the error by eliminating the vagueness
+
+const img = document.querySelector('img')!
+const myImg = document.getElementById('#img') as HTMLImageElement		// copy HTMLImageElement
+const nextImg = <HTMLImageElement>document.getElementById('#img')		// paste inside <>
+										// will eliminate the error
+
