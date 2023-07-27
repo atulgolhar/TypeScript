@@ -77,3 +77,61 @@ const myImg = document.getElementById('#img') as HTMLImageElement		// copy HTMLI
 const nextImg = <HTMLImageElement>document.getElementById('#img')		// paste inside <>
 										// will eliminate the error
 
+
+
+///////////////
+
+// 1st Variation
+let year: HTMLElement | null			// new line explicit definition here
+year = document.getElementById("year")		// 
+let thisYear: string				// new line explicit definition here
+thisYear = new Date().getFullYear().toString()	// remove const, add .toString method and this make TS happy b/c thisYear is truely a string
+if (year) {
+	year.setAttribute("datetime", thisYear)	// still error here as mousing over shows object is possibly null which we have no way of knowing this so need a TYPE GUARD
+	year.textContent = thisYear		// still error here
+}
+
+// now this works and TS is happy but there are still some bad habits here
+// so we apply just a little more of what we learned in Assertions from above
+
+
+// 2nd Variation
+const year = document.getElementById("year") as HTMLSpanElement
+const thisYear: string = new Date().getFullYear().toString()
+year.setAttribute("datetime", thisYear)
+year.textContent = thisYear
+
+
+// switch 		let back to const
+// line 2 delete 	year =
+// move line 2 to 1
+// delete line 1	HTMLElement | null
+// line 1 delete : and replace with equal = sign
+// now include Assertion in line 1	as HTMLSpanElement
+// why Assertion? b/c we explicitly told TS that hey we know that the SpanElement is inside our document
+// 		  we know it has the Id year and that is exactly what we are selecting so now when I mouse
+// 		  over it, then it shows me that year is an HTMLSpanElement
+// 		  so we explicit said this using a Type Assertion
+// now lets switch keyword let back to const
+
+// combine lines 2 and 3
+let thisYear: string				//
+thisYear = new Date().getFullYear().toString()	//
+
+// to now become this
+const thisYear: string = new Date().getFullYear().toString()	//
+
+// now after these changes, we dont need the if statement at all b/c 
+// we have told TS in line 1 with our Type Assertion of as HTMLSpanElement that 
+// we are definitely going to have a year
+// also notice for this same issue that when we mouse over, it does not offer the null option
+// and it is defined as 	const year: HTMLSpanElement and it does NOT have the union type with
+// the possible null value
+// so we can just delete the if statement
+// and then TS is ok with what we have left
+
+// 2nd Variation
+const year = document.getElementById("year") as HTMLSpanElement
+const thisYear: string = new Date().getFullYear().toString()
+year.setAttribute("datetime", thisYear)
+year.textContent = thisYear
