@@ -1,1 +1,4 @@
+TSError: ⨯ Unable to compile TypeScript:
+src/snippet1.ts:2:1 - error TS2322: Type 'number' is not assignable to type 'string'.
 
+2 var1 = 10;
