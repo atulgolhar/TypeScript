@@ -178,3 +178,6 @@ tsconfig.json
 
 
 v00.13.38
+
+// TS vs JS
+TypeScript Code is converted into Plain JavaScript Code: TypeScript code can’t be natively interpreted by browsers. So if the code was written in TypeScript, it gets compiled and converted into JavaScript (process is known as Trans-piled). With the help of JS code, browsers are able to read the code and display it.
